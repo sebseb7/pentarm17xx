@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 #include "drivers/ssp.h"
-#include "lcd.h"
+#include "drivers/lcd.h"
 #include "core/LPC17xx.h"
 #include "main.h"
 
