@@ -12,7 +12,6 @@
 //#define set_si()    (PORTB |=  (1 << PB5))
 //#define clr_si()    (PORTB &= ~(1 << PB5))
 
-void lcd_putc (uint8_t x, uint8_t y, uint8_t c, uint8_t mode);
 void lcd_plot (uint8_t xpos, uint8_t ypos, uint8_t mode);
 void lcdInit(void);
 

@@ -17,10 +17,10 @@ DEBUG = -g
 
 #########################################################################
 
-SRC=$(wildcard core/*.c *.c drivers/*.c )
+SRC=$(wildcard core/*.c *.c drivers/*.c libs/*.c) pixelfonts/5x3/font.c
 ASRC=$(wildcard core/*.s)
 OBJECTS= $(SRC:.c=.o) $(ASRC:.s=.o)
-HEADERS=$(wildcard core/*.h drivers/*.h *.h) 
+HEADERS=$(wildcard core/*.h drivers/*.h libs/*.h *.h) pixelfonts/5x3/font.h
 
 #  Compiler Options
 GCFLAGS = -std=gnu99 -Wall -fno-common -mcpu=cortex-m3 -mthumb -O$(OPTIMIZATION) $(DEBUG) 

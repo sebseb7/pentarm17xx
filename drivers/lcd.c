@@ -5,7 +5,6 @@
 #include "drivers/ssp.h"
 #include "lcd.h"
 #include "core/LPC17xx.h"
-#include "font8x6.h"
 #include "main.h"
 
 #define DISP_W 128
@@ -104,44 +103,6 @@ void lcd_plot (uint8_t xpos, uint8_t ypos, uint8_t mode)
 	}
 }
 
-void lcd_putc (uint8_t x, uint8_t y, uint8_t c, uint8_t mode)
-{
-	uint8_t ch;
-	uint8_t i;
-	uint16_t adress;
-
-
-	c &= 0x7f;
-
-	adress = y * 128 + x * 6;
-	adress &= 0x3FF;
-
-	for (i = 0; i < 6; i++)
-	{
-		ch = font8x6[c][i];
-
-		switch (mode)
-		{
-			case 0:
-				display_buffer[adress+i] = ch;
-				break;
-			case 1:
-				display_buffer[adress+i] |= ch;
-				break;
-			case 2:
-				display_buffer[adress+i] ^= ch;
-				break;
-			case 3:
-				display_buffer[adress+i] &= ch;
-				break;
-			case 4:
-				display_buffer[adress+i] &= ~ch;
-				break;
-		}
-
-		set_adress (adress + i, display_buffer[adress + i]);
-	}
-}
 
 void lcdInit()
 {

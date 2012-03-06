@@ -5,7 +5,7 @@
 #include "drivers/uart0.h"
 #include "drivers/lcd.h"
 #include "drivers/ssp.h"
-
+#include "libs/text.h"
 
 volatile uint32_t timeout_ms = 0;
 volatile uint32_t timeout_delay_ms = 0;
@@ -47,8 +47,7 @@ int main(void)
 
 
 	lcd_plot (1, 1, 1);
-	lcd_putc (1,1,'c',1);
-
+	print_5x3_at(3,3,"Hello",1);
 
 	while(1)
 	{
