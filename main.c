@@ -45,6 +45,12 @@ int main(void)
 	// sets SystemCoreClock to 44583722, but why ? 
 	SystemCoreClockUpdate();
 
+
+	lcd_plot (1, 1, 1);
+
+	while(1)
+	{
+	}
 }
 
 
