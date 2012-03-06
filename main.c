@@ -47,6 +47,8 @@ int main(void)
 
 
 	lcd_plot (1, 1, 1);
+	lcd_putc (1,1,'c',1);
+
 
 	while(1)
 	{
