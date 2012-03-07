@@ -14,6 +14,7 @@
 
 void lcd_plot (uint8_t xpos, uint8_t ypos, uint8_t mode);
 void lcdInit(void);
+void lcd_cls (void);
 
 
 #endif

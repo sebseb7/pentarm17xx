@@ -64,11 +64,35 @@ int main(void)
 	pincfg.Pinnum=20;               // SCL1
 	PINSEL_ConfigPin(&pincfg);
 
-	I2C_Init(LPC_I2C1, 400000);           // bus initialize, with speed
+	I2C_Init(LPC_I2C1, 100000);           // bus initialize, with speed
 	I2C_Cmd(LPC_I2C1, ENABLE);        // bus activate
+
+
+	uint8_t put = 0x32;
+	uint8_t get[6] = {1,2,3,4,5,6};
+
+	I2C_M_SETUP_Type blok;           // Master setup control block
+	blok.sl_addr7bit=0xa6;
+	blok.tx_data=&put;
+	blok.tx_length=1;
+	blok.rx_data=get;
+	blok.rx_length=6;
+	blok.retransmissions_max=5;
+	Status mtd;                      // value from LPC functions
+
+
 
 	while(1)
 	{
+		mtd=I2C_MasterTransferData(LPC_I2C1, &blok, I2C_TRANSFER_POLLING);
+		lcd_cls();
+		print_num_5x3_at(1,1,get[0],6,' ',1);
+		print_num_5x3_at(1,10,get[1],6,' ',1);
+		print_num_5x3_at(1,20,get[2],6,' ',1);
+		print_num_5x3_at(1,30,get[3],6,' ',1);
+		print_num_5x3_at(1,40,get[4],6,' ',1);
+		print_num_5x3_at(1,50,get[5],6,' ',1);
+		delay_ms(100);
 	}
 }
 
